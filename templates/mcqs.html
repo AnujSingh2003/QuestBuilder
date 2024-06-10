@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated MCQs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: grey; /* Light gray background */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: left;
+            margin-top: 5%;
+        }
+        .card-body {
+            text-align: left;
+        }
+        /* Hide the correct answers initially */
+        .correct-answer {
+            display: none;
+            font-size: 1.2em; /* Increase the font size of the correct answer */
+        }
+        /* Style for wrong answers */
+        .wrong-answer {
+            color: rgb(255, 0, 0); /* Red color for wrong answers */
+        }
+        /* Style for correct answers */
+        .correct {
+            color: rgb(0, 128, 0); /* Green color for correct answers */
+        }
+        /* Increase the font size of MCQ options */
+        .form-check-label {
+            font-size: 1.2em;
+        }
+        /* Increase the font size of the question */
+        .card-title {
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Start of content -->
+    <h1 class="mt-4 text-center">Generated MCQs</h1>
+    <div class="container" id="mcqs-container">
+        {% for index, mcq in mcqs %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Q{{ index }}: {{ mcq[0] }}?</h5>
+                    <form>
+                        {% set options = ['A', 'B', 'C', 'D'] %}
+                        {% set num_choices = mcq[1]|length %}
+                        {% for choice_index in range(num_choices) %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answer{{ index }}" id="choice{{ index }}{{ choice_index }}" value="{{ options[choice_index] }}">
+                                <label class="form-check-label" for="choice{{ index }}{{ choice_index }}">
+                                    {{ options[choice_index] }}: {{ mcq[1][choice_index] }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </form>
+                    <!-- Display the correct answer with a class -->
+                    <small class="text-muted correct-answer">Correct Answer: {{ mcq[2] }}</small>
+                </div>
+            </div>
+        {% endfor %}
+        <!-- Button to submit answers -->
+        <button id="submit-btn" class="btn btn-primary">Submit</button>
+        <!-- Button to show results (initially hidden) -->
+        <button id="show-results-btn" class="btn btn-primary" style="display: none;">Show Results</button>
+    </div>
+    <!-- End of content -->
+
+    <!-- JavaScript to handle submitting and showing results -->
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            // Get all the questions
+            var cards = document.querySelectorAll('.card');
+
+            // Flag to check if all questions are answered
+            var allQuestionsAnswered = true;
+
+            // Loop through each question card
+            cards.forEach(function(card, index) {
+                // Get all the radio buttons in the current card
+                var radioButtons = card.querySelectorAll('input[type="radio"]');
+                // Get the selected answer
+                var selectedAnswer = null;
+
+                radioButtons.forEach(function(radioButton) {
+                    if (radioButton.checked) {
+                        selectedAnswer = radioButton.value;
+                    }
+                });
+
+                // Check if the question is answered
+                if (selectedAnswer === null) {
+                    allQuestionsAnswered = false;
+                }
+            });
+
+            // If all questions are answered, show the "Show Results" button
+            if (allQuestionsAnswered) {
+                document.getElementById('show-results-btn').style.display = 'block';
+                // Hide the submit button
+                this.style.display = 'none';
+            } else {
+                alert('Please answer all questions before submitting.');
+            }
+        });
+
+        document.getElementById('show-results-btn').addEventListener('click', function() {
+            // Get all the questions
+            var cards = document.querySelectorAll('.card');
+
+            // Loop through each question card
+            cards.forEach(function(card, index) {
+                // Get all the radio buttons in the current card
+                var radioButtons = card.querySelectorAll('input[type="radio"]');
+                // Get the correct answer
+                var correctAnswer = card.querySelector('.correct-answer').textContent.split(': ')[1];
+
+                radioButtons.forEach(function(radioButton) {
+                    // Check if the selected answer is wrong or correct
+                    if (radioButton.checked) {
+                        if (radioButton.value === correctAnswer) {
+                            radioButton.nextElementSibling.classList.add('correct');
+                        } else {
+                            radioButton.nextElementSibling.classList.add('wrong-answer');
+                        }
+                    }
+                });
+
+                // Display the correct answer
+                card.querySelector('.correct-answer').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate MCQs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(240, 248, 255); /* Set RGB background color */
+            font-family: 'Arial', sans-serif; /* Set font family */
+        }
+        .container {
+            text-align: center;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase box shadow effect */
+            background-color: #ffffff; /* Set background color */
+        }
+        h1 {
+            font-size: 2.5rem; /* Increase font size */
+            color: #007bff; /* Set text color */
+        }
+        p.lead {
+            font-size: 1.2rem; /* Increase font size */
+            color: #555; /* Set text color */
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        .form-control-file {
+            margin-left: 435px;
+    margin-top: 16px;
+
+    padding: 9px;
+        }
+        .form-control {
+            display: inline-block;
+            width: auto;
+            background-color: rgb(0, 123, 255); /* Set RGB background color */
+            color: white; /* Set text color */
+        }
+        .form-control:hover {
+            background-color: rgb(0, 105, 217); /* Set RGB background color on hover */
+        }
+        .btn-primary {
+            background-color: rgb(0, 123, 255); /* Set RGB background color */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem; /* Set font size */
+            transition: background-color 0.3s ease; /* Add transition effect */
+        }
+        .btn-primary:hover {
+            background-color: rgb(0, 105, 217); /* Set RGB background color on hover */
+        }
+        .side-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40; /* Set text color */
+        }
+        .left-side-text {
+            left: 20px;
+        }
+        .right-side-text {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar (optional) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">MCQ Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-8">Generate MCQs</h1>
+        <p class="lead">This application generates multiple-choice questions (MCQs) based on the provided text. You can either upload a PDF or TXT file containing the text.</p>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group" style="margin-top:50px;">
+                <label for="file">Upload File(s) (PDF or TXT)</label>
+                <input type="file" class="form-control-file" id="file" name="files[]" multiple>
+            </div>
+            <div class="form-group">
+                <label for="num_questions">Number of Questions:</label>
+                <select class="form-control" id="num_questions" name="num_questions">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate MCQs</button>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
