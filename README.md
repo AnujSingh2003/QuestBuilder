@@ -52,6 +52,11 @@ The `main.py` file includes the logic for:
 - Integrate more advanced NLP methods and fine-tune the BERT model for better accuracy.
 - Add support for different languages.
 - Improve the user interface for a better user experience.
+- ![WhatsApp Image 2024-06-16 at 14 50 53_56dfce68](https://github.com/AnujSingh2003/QuestBuilder/assets/103198168/608078c9-a2e1-48ab-889d-a6ee138667ad)
+- ![WhatsApp Image 2024-06-16 at 14 52 53_0441f8e8](https://github.com/AnujSingh2003/QuestBuilder/assets/103198168/39bb54b4-f6fa-4e40-b3f3-e668c73e9937)
+- ![WhatsApp Image 2024-06-16 at 14 53 21_c57ec618](https://github.com/AnujSingh2003/QuestBuilder/assets/103198168/221e4b88-b962-486b-baa6-4043b74194d8)
+- ![WhatsApp Image 2024-06-16 at 14 54 22_0932e2dc](https://github.com/AnujSingh2003/QuestBuilder/assets/103198168/33db84fe-6a15-4a33-b7eb-87af35b66ab0)
+
 
 ## Contributions
 
